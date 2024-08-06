@@ -34,7 +34,8 @@ class BasicAuth(Auth):
             except binascii.Error:
                 return None
 
-    def extract_user_credentials(self, decoded_base64_authorization_header: str) -> (str, str):
+    def extract_user_credentials(
+            self, decoded_base64_authorization_header: str) -> (str, str):
         """ extract_user_credentials method """
         if decoded_base64_authorization_header is None:
             return (None, None)
@@ -44,7 +45,8 @@ class BasicAuth(Auth):
             return (None, None)
         return tuple(decoded_base64_authorization_header.split(':', 1))
 
-    def user_object_from_credentials(self, user_email: str, user_pwd: str) -> TypeVar('User'):
+    def user_object_from_credentials(
+            self, user_email: str, user_pwd: str) -> TypeVar('User'):
         """ user_object_from_credentials method """
         if user_email is None or type(user_email) is not str:
             return None
