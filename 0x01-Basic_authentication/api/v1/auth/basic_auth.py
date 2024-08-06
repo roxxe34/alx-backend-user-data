@@ -2,6 +2,8 @@
 """ BasicAuth module """
 from flask import request
 from typing import List, TypeVar
+import binascii
+import base64
 
 
 class BasicAuth:
@@ -16,3 +18,17 @@ class BasicAuth:
         if not authorization_header.startswith("Basic "):
             return None
         return authorization_header[6:]
+
+    def decode_base64_authorization_header(
+            self, base64_authorization_header: str) -> str:
+        """
+        returns the decoded value of a Base64 string
+        """
+        b64_header = base64_authorization_header
+        if b64_header and isinstance(b64_header, str):
+            try:
+                encode = b64_header.encode('utf-8')
+                base = base64.b64decode(encode)
+                return base.decode('utf-8')
+            except binascii.Error:
+                return None
