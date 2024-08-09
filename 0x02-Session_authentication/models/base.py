@@ -45,7 +45,7 @@ class Base():
         return (self.id == other.id)
 
     def to_json(self, for_serialization: bool = False) -> dict:
-        """ Convert the object a JSON dictionary
+        """ Convert object to JSON dictionary
         """
         result = {}
         for key, value in self.__dict__.items():
@@ -59,7 +59,7 @@ class Base():
 
     @classmethod
     def load_from_file(cls):
-        """ Load all objects from file
+        """ Load all objects from a file
         """
         s_class = cls.__name__
         file_path = ".db_{}.json".format(s_class)
@@ -74,7 +74,7 @@ class Base():
 
     @classmethod
     def save_to_file(cls):
-        """ Save all objects to file
+        """ Save all objects to a file
         """
         s_class = cls.__name__
         file_path = ".db_{}.json".format(s_class)

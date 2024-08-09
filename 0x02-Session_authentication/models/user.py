@@ -26,7 +26,7 @@ class User(Base):
 
     @password.setter
     def password(self, pwd: str):
-        """ Setter of a new password: encrypt in SHA256
+        """ Setter of a new password
         """
         if pwd is None or type(pwd) is not str:
             self._password = None
@@ -44,7 +44,7 @@ class User(Base):
         return hashlib.sha256(pwd_e).hexdigest().lower() == self.password
 
     def display_name(self) -> str:
-        """ Display User name based on email/first_name/last_name
+        """ Display User name based on (email/first_name/last_name)
         """
         if self.email is None and self.first_name is None \
                 and self.last_name is None:

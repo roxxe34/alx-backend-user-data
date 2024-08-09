@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-A module that contains a flask view that handles all routes for session
-authentication
+session auth
 """
 from api.v1.views import app_views
 from flask import jsonify, request, make_response
